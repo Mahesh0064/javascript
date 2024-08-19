@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="background-color: #212121; color: #fff">
+    <h1>We are learning about closure</h1>
+
+    <button id="orange">Orange</button>
+    <button id="green">Orange</button>
+
+    <script>
+      // function init() {
+      //   let name = "Mozilla"; // name is a local variable created by init
+      //   function displayName() {
+      //     // displayName() is the inner function, that forms the closure
+      //     console.log(name); // use variable declared in the parent function
+      //   }
+      //   displayName();
+      // }
+      // init();
+      ////////////////// closure /////////////////
+      // const myFunction = () => {
+      //   let myValue = 2;
+      //   console.log(myValue);
+
+      //   const childFunction = () => {
+      //     console.log((myValue += 1));
+      //   };
+
+      //   return childFunction;
+      // };
+
+      // const result = myFunction();
+      // console.log(result);
+      // result();
+      // result();
+      // result();
+
+      ///// lexical scope //////////////////////////////
+      // const myFunction = () => {
+      //   let myValue = 2;
+      //   console.log(myValue);
+
+      //   const childFunction = () => {
+      //     console.log((myValue += 1));
+      //   };
+
+      //   childFunction();
+      // };
+
+      // myFunction();
+      // ///// lexical ///////////////////
+      //       function outer() {
+      //         let username = "Mahesh Kumar";
+      //         console.log("Secret in outer function = ", secret);
+      //         function inner() {
+      //           let secret = "mysecrect@14231";
+      //           console.log("Inner function ", username);
+      //         }
+      //         function innerTwo() {
+      //           console.log(secret);
+      //           console.log("InnerTwo function ", username);
+      //         }
+      //         inner();
+      //         innerTwo();
+      //       }
+      //       outer();
+      //       console.log("Too Outer scope", username);
+
+      /// closure ///////////////
+      function makeFun() {
+        let name = "Mozilla"; // name is a local variable created by init
+        function displayName() {
+          // displayName() is the inner function, that forms the closure
+          console.log(name); // use variable declared in the parent function
+        }
+        return displayName;
+      }
+      const myFun = makeFun();
+      myFun();
+    </script>
+    <script>
+      // document.getElementById("orange").onclick = function () {
+      //   document.body.style.backgroundColor = "orange";
+      // };
+      // document.getElementById("green").onclick = function () {
+      //   document.body.style.backgroundColor = "green";
+      // };
+
+      function clickHandler(color) {
+        //document.body.style.backgroundColor = ` ${color}`;
+        return function () {
+          document.body.style.backgroundColor = ` ${color}`;
+        };
+      }
+      document.getElementById("orange").onclick = clickHandler("orange");
+      document.getElementById("green").onclick = clickHandler("green");
+    </script>
+  </body>
+</html>
